@@ -5,8 +5,8 @@
   </section>
 
   <section>
-    <!-- ToDo input -->
-    <ToDoInput :ToDoss="texts" @send-text="onText($event)" />
+    <!-- Pasa tanto texts como onDelete como props -->
+    <ToDoInput :ToDoss="texts" :onDelete="onDelete" @send-text="onText($event)" />
   </section>
 </template>
 
@@ -14,5 +14,6 @@
 import ToDoInput from '@/modules/todo/components/ToDoInput.vue'
 import { useToDo } from '../composables/useToDo'
 
-const { texts, onText } = useToDo()
+// Solo una instancia de useToDo en toda la aplicación
+const { texts, onText, onDelete } = useToDo()
 </script>

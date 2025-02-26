@@ -35,17 +35,15 @@
 import { ref } from 'vue'
 import type { ToDos } from '../interface/to-do.interface'
 import ToDoList from './ToDoList.vue'
-import { useToDo } from '../composables/useToDo'
 
 const text = ref('')
 
 interface Props {
   ToDoss: ToDos[]
+  onDelete: (id: number) => void // Recibe onDelete como prop
 }
 
-defineProps<Props>()
-
-const { onDelete } = useToDo()
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   sendText: [Text: string]
@@ -59,7 +57,8 @@ const sendText = () => {
   text.value = ''
 }
 
+// Usa la función onDelete que recibimos como prop
 const deleteTask = (id: number) => {
-  onDelete(id)
+  props.onDelete(id)
 }
 </script>
