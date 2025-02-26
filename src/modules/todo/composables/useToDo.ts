@@ -8,6 +8,7 @@ export const useToDo = () => {
     texts.value.push({
       id: new Date().getTime(),
       text: text,
+      completed: false,
     })
   }
 
@@ -19,9 +20,18 @@ export const useToDo = () => {
     }
   }
 
+  //actualizar estado de un elemento mediante el indice
+  const taskCompleted = (id: number) => {
+    const index = texts.value.findIndex((text) => text.id === id)
+    if (index !== -1) {
+      texts.value[index].completed = !texts.value[index].completed
+    }
+  }
+
   return {
     texts,
     onText,
     onDelete,
+    taskCompleted,
   }
 }
