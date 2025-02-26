@@ -26,7 +26,7 @@
 
     <div class="">
       <!-- ToDoList -->
-      <ToDoList v-for="ToDos in ToDoss" :key="ToDos.id" v-bind="ToDos" @delete-task="deleteTask" />
+      <ToDoList v-for="ToDo in ToDoss" :key="ToDo.id" v-bind="ToDo" @delete-task="deleteTask" />
     </div>
   </div>
 </template>

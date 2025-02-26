@@ -11,8 +11,12 @@ export const useToDo = () => {
     })
   }
 
+  //eliminar un elemento mediante el indice
   const onDelete = (id: number) => {
-    texts.value.splice(texts.value.findIndex((text) => text.id === id))
+    const index = texts.value.findIndex((text) => text.id === id)
+    if (index !== -1) {
+      texts.value.splice(index, 1) // Eliminar 1 elemento a partir del índice encontrado
+    }
   }
 
   return {

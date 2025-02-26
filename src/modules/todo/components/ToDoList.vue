@@ -3,7 +3,7 @@
     {{ text }}
   </div>
   <div class="w-80">
-    <button class="mx-1.5" @click="$emit('delete-task')">
+    <button class="mx-1.5" @click="$emit('delete-task', id)">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -31,12 +31,15 @@
 </template>
 
 <script setup lang="ts">
-import type { ToDos } from '../interface/to-do.interface'
-
 interface Props {
   text: string
   id: number
 }
 
 defineProps<Props>()
+
+// Definimos los eventos que este componente puede emitir
+defineEmits<{
+  'delete-task': [id: number]
+}>()
 </script>
